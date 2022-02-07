@@ -11,8 +11,15 @@ Examples:
     >>> delete_from_list([], 'b')
     []
 """
-from typing import List, Any
+def delete_from_list(lst, x):
+    i, n = 0, len(lst)
+    while x in lst:
+        i = lst.index(x, i, n)
+        lst.pop(i)
+    print(lst)
 
 
-def delete_from_list(list_to_clean: List, item_to_delete: Any) -> List:
-    ...
+delete_from_list([1, 2, 3, 4, 3], 3)  # [1, 2, 4]
+delete_from_list(['a', 'b', 'c', 'b', 'd'], 'b')  # ['a', 'c', 'd']
+delete_from_list([1, 2, 3], 'b')  # [1, 2, 3]
+delete_from_list([], 'b')  # []
