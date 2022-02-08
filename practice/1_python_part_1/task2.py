@@ -9,8 +9,14 @@ Examples:
     >>> set_to_dict({'a': 5})
     {'a': 5}
 """
-from typing import Dict
+def set_to_dict(d, **qwargs):
+    print(d, qwargs)
+    for k, v in qwargs.items():
+        if k not in d or d[k] < v:
+            d[k] = v
+    print(d)
 
 
-def set_to_dict(dict_to_update: Dict[str, int], **items_to_set) -> Dict:
-    ...
+set_to_dict({'a': 1, 'b': 2, 'c': 3}, a=0, b=4)  # {'a': 1, 'b': 4, 'c': 3}
+set_to_dict({}, a=0)  # {a: 0}
+set_to_dict({'a': 5})  # {'a': 5}
