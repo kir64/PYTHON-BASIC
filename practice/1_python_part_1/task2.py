@@ -14,9 +14,9 @@ def set_to_dict(d, **qwargs):
     for k, v in qwargs.items():
         if k not in d or d[k] < v:
             d[k] = v
-    print(d)
+    return d
 
 
-set_to_dict({'a': 1, 'b': 2, 'c': 3}, a=0, b=4)  # {'a': 1, 'b': 4, 'c': 3}
-set_to_dict({}, a=0)  # {a: 0}
-set_to_dict({'a': 5})  # {'a': 5}
+print(set_to_dict({'a': 1, 'b': 2, 'c': 3}, a=0, b=4))  # {'a': 1, 'b': 4, 'c': 3}
+print(set_to_dict({}, a=0))  # {a: 0}
+print(set_to_dict({'a': 5}))  # {'a': 5}
