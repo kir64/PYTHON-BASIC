@@ -16,8 +16,19 @@ Examples:
 
 """
 
+def read_numbers(n):
+    lst = []
+    for _ in range(n):
+        s = input()
+        if s.isdigit():
+            lst.append(int(s))
+    if len(lst) > 0:
+        avg = sum(lst) / len(lst)
+        return f'Avg: {avg:.2f}'
+    return 'No numbers entered'
 
-def read_numbers(n: int) -> str:
-    ...
 
-
+print(read_numbers(5))  #Avg: 1.67
+# user enters: 1, 2, hello, 2, world
+print(read_numbers(5))  #No numbers entered
+# user enters: hello, world, foo, bar, baz
