@@ -9,6 +9,7 @@ Examples:
     >>> set_to_dict({'a': 5})
     {'a': 5}
 """
+
 def set_to_dict(d, **qwargs):
     print(d, qwargs)
     for k, v in qwargs.items():
@@ -20,3 +21,4 @@ def set_to_dict(d, **qwargs):
 print(set_to_dict({'a': 1, 'b': 2, 'c': 3}, a=0, b=4))  # {'a': 1, 'b': 4, 'c': 3}
 print(set_to_dict({}, a=0))  # {a: 0}
 print(set_to_dict({'a': 5}))  # {'a': 5}
+
