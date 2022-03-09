@@ -25,36 +25,55 @@ Methods:
     Note that this method doesn't need object itself
 PEP8 comply strictly.
 """
-import datetime
-
-
-class Teacher:
-    ...
-
-
-class Student:
-    ...
+from datetime import *
 
 
 class Homework:
-    ...
+    def __init__(self, text,  days_left):
+        self.text = text
+        self.days_left = days_left
+        self.created = datetime.now()
+        self.deadline = timedelta(days=days_left)
+
+    def is_active(self):
+        return datetime.now() < self.created + self.deadline
 
 
-if __name__ == '__main__':
-    teacher = Teacher('Dmitry', 'Orlyakov')
-    student = Student('Vladislav', 'Popov')
-    teacher.last_name  # Daniil
-    student.first_name  # Petrov
+class Human:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
 
-    expired_homework = teacher.create_homework('Learn functions', 0)
-    expired_homework.created  # Example: 2019-05-26 16:44:30.688762
-    expired_homework.deadline  # 0:00:00
-    expired_homework.text  # 'Learn functions'
 
-    # create function from method and use it
-    create_homework_too = teacher.create_homework
-    oop_homework = create_homework_too('create 2 simple classes', 5)
-    oop_homework.deadline  # 5 days, 0:00:00
+class Teacher(Human):
+    @staticmethod
+    def create_homework(task, days_to_complete):
+        return Homework(task, days_to_complete)
 
-    student.do_homework(oop_homework)
-    student.do_homework(expired_homework)  # You are late
+
+class Student(Human):
+    @staticmethod
+    def do_homework(homework):
+        if homework.is_active():
+            return homework
+        print('You are late')
+        return None
+
+
+teacher = Teacher('Dmitry', 'Orlyakov')
+student = Student('Vladislav', 'Popov')
+print(student.first_name)  # Vladislav
+print(teacher.last_name)  # Orlyakov
+
+expired_homework = teacher.create_homework('Learn functions', 0)
+print(expired_homework.created)  # Example: 2019-05-26 16:44:30.688762
+print(expired_homework.deadline)  # 0:00:00
+print(expired_homework.text)  # 'Learn functions'
+
+# create function from method and use it
+create_homework_too = teacher.create_homework
+oop_homework = create_homework_too('create 2 simple classes', 5)
+print(oop_homework.deadline)  # 5 days, 0:00:00
+
+student.do_homework(oop_homework)
+student.do_homework(expired_homework)  # You are late
