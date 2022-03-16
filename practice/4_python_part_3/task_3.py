@@ -12,8 +12,16 @@ Note that address may have several domain levels
 import re
 
 
-def is_http_domain(domain: str) -> bool:
-    ...
+def is_http_domain(domain):
+    return re.match(r'\bhttp[s]?://*[/]?', domain) is not None
+
+
+print(is_http_domain('http://wikipedia.org'))
+# True
+print(is_http_domain('https://ru.wikipedia.org/'))
+# True
+print(is_http_domain('griddynamics.com'))
+# False
 
 
 """
