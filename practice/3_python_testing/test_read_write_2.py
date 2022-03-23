@@ -5,7 +5,6 @@ https://docs.python.org/3/library/tempfile.html
 https://docs.pytest.org/en/6.2.x/tmpdir.html
 """
 
-import os
 import random
 import string
 import tempfile
