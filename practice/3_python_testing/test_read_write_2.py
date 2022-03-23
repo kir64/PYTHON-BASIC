@@ -37,6 +37,3 @@ def test_task_read_write_2():
 
     txt_to_check = ','.join(txt_to_check.strip().split('\n')[::-1])
     assert res_txt.strip() == txt_to_check
-
-
-test_task_read_write_2()
