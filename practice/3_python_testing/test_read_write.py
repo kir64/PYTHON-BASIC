@@ -44,9 +44,6 @@ def test_task_read_write():
         [lst[i].close() for i in range(test_files_num)]
 
     with open('result.txt', 'r') as rf:
-        res_content = rf.read()
+        res_content = rf.read().strip()
 
     assert ', '.join(map(str, content_lst)) == res_content
-
-
-test_task_read_write()
